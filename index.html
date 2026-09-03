@@ -2,209 +2,555 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+
   <title>Yanika & Ratchama Wedding Card</title>
+
   <style>
+
     :root {
       --bg1: #f6f3ec;
       --bg2: #e9efe3;
-      --text: #5e6940;
+
       --dot: rgba(95, 105, 64, 0.25);
       --dot-active: #6b7445;
+
       --safe-top: env(safe-area-inset-top, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
     }
 
-    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-    html, body {
-      margin: 0;
-      height: 100%;
-      overflow: hidden;
-      font-family: Georgia, "Times New Roman", serif;
-      background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.92), rgba(255,255,255,0) 28%),
-        linear-gradient(145deg, var(--bg1), var(--bg2));
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
+
+
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at top left,
+          rgba(255,255,255,0.92),
+          rgba(255,255,255,0) 28%
+        ),
+        linear-gradient(
+          145deg,
+          var(--bg1),
+          var(--bg2)
+        );
+    }
+
 
     body {
       display: flex;
       align-items: stretch;
       justify-content: center;
-      color: var(--text);
     }
 
+
+    /* =========================
+       MAIN MOBILE INTERFACE
+       ========================= */
+
     .app {
+      position: relative;
+
       width: min(100vw, 700px);
       height: 100dvh;
-      position: relative;
+
       overflow: hidden;
-      padding-top: max(8px, var(--safe-top));
-      padding-bottom: max(14px, var(--safe-bottom));
+
+      padding-top: max(6px, var(--safe-top));
+      padding-bottom: max(8px, var(--safe-bottom));
     }
+
+
+    /* =========================
+       HORIZONTAL E-BOOK
+       ========================= */
 
     .slides {
       width: 100%;
       height: 100%;
+
       display: flex;
+
       overflow-x: auto;
       overflow-y: hidden;
+
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
+
+      overscroll-behavior-x: contain;
+
       scrollbar-width: none;
       -ms-overflow-style: none;
+
+      touch-action: pan-x;
     }
-    .slides::-webkit-scrollbar { display: none; }
+
+
+    .slides::-webkit-scrollbar {
+      display: none;
+    }
+
 
     .slide {
       flex: 0 0 100%;
+
       width: 100%;
       height: 100%;
+
       scroll-snap-align: start;
       scroll-snap-stop: always;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 10px 54px;
+
       position: relative;
+
+      padding:
+        6px
+        6px
+        44px;
     }
+
+
+    /* =========================
+       CARD
+       ========================= */
 
     .card-frame {
       width: 100%;
       height: 100%;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 22px;
+
       overflow: hidden;
-      background: rgba(255,255,255,0.62);
+
+      border-radius: 20px;
+
+      background: rgba(255,255,255,0.30);
+
       box-shadow:
-        0 18px 50px rgba(0,0,0,0.12),
-        inset 0 0 0 1px rgba(255,255,255,0.66);
-      backdrop-filter: blur(10px);
+        0 18px 45px rgba(0,0,0,0.10);
+
+      backdrop-filter: blur(8px);
     }
+
 
     .card-frame img {
       width: 100%;
       height: 100%;
+
       object-fit: contain;
+
       display: block;
+
       user-select: none;
+      -webkit-user-select: none;
       -webkit-user-drag: none;
-      background: transparent;
-    }
 
-    .overlay {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: max(10px, calc(var(--safe-bottom) + 4px));
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
       pointer-events: none;
-      z-index: 10;
     }
 
-    .dots {
+
+    /* =========================
+       PAGE DOTS
+       ========================= */
+
+    .page-indicator {
+      position: absolute;
+
+      left: 50%;
+      bottom: max(
+        12px,
+        calc(var(--safe-bottom) + 6px)
+      );
+
+      transform: translateX(-50%);
+
+      z-index: 10;
+
       display: flex;
+      align-items: center;
+
       gap: 7px;
+
       padding: 8px 12px;
+
       border-radius: 999px;
-      background: rgba(255,255,255,0.55);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+
+      background: rgba(255,255,255,0.52);
+
+      backdrop-filter: blur(12px);
+
+      box-shadow:
+        0 8px 22px rgba(0,0,0,0.07);
+
+      pointer-events: none;
     }
+
 
     .dot {
       width: 8px;
       height: 8px;
+
       border-radius: 50%;
+
       background: var(--dot);
-      transition: transform 0.2s ease, background 0.2s ease;
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
     }
+
 
     .dot.active {
       background: var(--dot-active);
-      transform: scale(1.2);
+
+      transform: scale(1.25);
     }
 
-    .hint {
-      font-size: 0.82rem;
-      line-height: 1;
-      color: #6e7657;
-      background: rgba(255,255,255,0.5);
-      padding: 7px 12px;
-      border-radius: 999px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-      opacity: 0.95;
-      transition: opacity 0.35s ease;
-    }
 
-    .hint.hide {
-      opacity: 0;
-    }
+    /* =========================
+       DESKTOP / TABLET
+       ========================= */
 
     @media (min-width: 701px) {
-      .slide { padding-left: 24px; padding-right: 24px; padding-bottom: 64px; }
+
+      .slide {
+        padding:
+          16px
+          24px
+          56px;
+      }
+
+      .card-frame {
+        border-radius: 24px;
+      }
+
     }
+
   </style>
 </head>
+
+
+
 <body>
+
+
   <main class="app">
-    <section class="slides" id="slides" aria-label="Wedding card flipbook">
-      <article class="slide" aria-label="Page 1">
+
+
+    <!-- =========================
+         WEDDING CARD PAGES
+         ========================= -->
+
+    <section
+      class="slides"
+      id="slides"
+      aria-label="Wedding Invitation"
+    >
+
+
+      <!-- PAGE 1 : FRONT -->
+
+      <article
+        class="slide"
+        aria-label="Wedding Card Front"
+      >
+
         <div class="card-frame">
-          <img src="assets/front.png" alt="Wedding card front" />
+
+          <img
+            src="assets/front.png"
+            alt="Yanika and Ratchama Wedding Invitation Front"
+          />
+
         </div>
+
       </article>
-      <article class="slide" aria-label="Page 2">
+
+
+
+      <!-- PAGE 2 : BACK -->
+
+      <article
+        class="slide"
+        aria-label="Wedding Card Back"
+      >
+
         <div class="card-frame">
-          <img src="assets/back.png" alt="Wedding card back" />
+
+          <img
+            src="assets/back.png"
+            alt="Yanika and Ratchama Wedding Invitation Back"
+          />
+
         </div>
+
       </article>
+
+
     </section>
 
-    <div class="overlay" aria-hidden="true">
-      <div class="dots">
-        <span class="dot active" id="dot1"></span>
-        <span class="dot" id="dot2"></span>
-      </div>
-      <div class="hint" id="hint">Swipe left / right</div>
+
+
+    <!-- =========================
+         PAGE INDICATOR
+         ========================= -->
+
+    <div
+      class="page-indicator"
+      aria-hidden="true"
+    >
+
+      <span
+        class="dot active"
+        id="dot1"
+      ></span>
+
+      <span
+        class="dot"
+        id="dot2"
+      ></span>
+
     </div>
+
+
+
+    <!-- =========================
+         BACKGROUND MUSIC
+         
+         Put your file here:
+         assets/music.m4a
+         ========================= -->
+
+    <audio
+      id="bgMusic"
+      loop
+      preload="auto"
+      playsinline
+    >
+
+      <source
+        src="assets/music.m4a"
+        type="audio/mp4"
+      />
+
+    </audio>
+
+
   </main>
 
-  <script>
-    const slides = document.getElementById('slides');
-    const dots = [document.getElementById('dot1'), document.getElementById('dot2')];
-    const hint = document.getElementById('hint');
-    let lastIndex = 0;
-    let hintHidden = false;
 
-    function updateDots() {
-      const index = Math.round(slides.scrollLeft / slides.clientWidth);
-      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-      if (index !== lastIndex) {
-        lastIndex = index;
-        if (!hintHidden) {
-          hint.classList.add('hide');
-          hintHidden = true;
-        }
+
+  <script>
+
+
+    /* =========================
+       ELEMENTS
+       ========================= */
+
+    const slides =
+      document.getElementById("slides");
+
+    const dot1 =
+      document.getElementById("dot1");
+
+    const dot2 =
+      document.getElementById("dot2");
+
+    const bgMusic =
+      document.getElementById("bgMusic");
+
+
+    /* =========================
+       MUSIC SETTINGS
+       ========================= */
+
+    // Volume:
+    // 0.00 = silent
+    // 0.30 = soft
+    // 0.55 = medium
+    // 1.00 = maximum
+
+    bgMusic.volume = 0.55;
+
+
+    let musicStarted = false;
+
+
+    async function startMusic() {
+
+      if (musicStarted) {
+        return;
       }
+
+
+      try {
+
+        await bgMusic.play();
+
+        musicStarted = true;
+
+      }
+
+      catch (error) {
+
+        console.log(
+          "Music will start after user interaction."
+        );
+
+      }
+
     }
 
-    slides.addEventListener('scroll', updateDots, { passive: true });
-    slides.addEventListener('touchstart', () => {
-      if (!hintHidden) {
-        hint.classList.add('hide');
-        hintHidden = true;
-      }
-    }, { passive: true });
 
-    window.addEventListener('resize', updateDots);
-    updateDots();
+
+    /* =========================
+       START MUSIC
+       AFTER FIRST USER ACTION
+       ========================= */
+
+
+    // iPhone / Android touch
+
+    document.addEventListener(
+      "touchstart",
+      startMusic,
+      {
+        once: true,
+        passive: true
+      }
+    );
+
+
+    // Mouse / modern browsers
+
+    document.addEventListener(
+      "pointerdown",
+      startMusic,
+      {
+        once: true
+      }
+    );
+
+
+    // Keyboard fallback
+
+    document.addEventListener(
+      "keydown",
+      startMusic,
+      {
+        once: true
+      }
+    );
+
+
+
+    /* =========================
+       PAGE INDICATOR
+       ========================= */
+
+    function updatePageIndicator() {
+
+      const pageWidth =
+        slides.clientWidth;
+
+
+      const currentPage =
+        Math.round(
+          slides.scrollLeft /
+          pageWidth
+        );
+
+
+      if (currentPage === 0) {
+
+        dot1.classList.add("active");
+        dot2.classList.remove("active");
+
+      }
+
+      else {
+
+        dot1.classList.remove("active");
+        dot2.classList.add("active");
+
+      }
+
+    }
+
+
+
+    slides.addEventListener(
+      "scroll",
+      updatePageIndicator,
+      {
+        passive: true
+      }
+    );
+
+
+
+    window.addEventListener(
+      "resize",
+      updatePageIndicator
+    );
+
+
+
+    /* =========================
+       TRY MUSIC AGAIN
+       WHEN USER SWIPES
+       ========================= */
+
+    slides.addEventListener(
+      "touchmove",
+      startMusic,
+      {
+        once: true,
+        passive: true
+      }
+    );
+
+
+    slides.addEventListener(
+      "scroll",
+      startMusic,
+      {
+        once: true,
+        passive: true
+      }
+    );
+
+
+
+    /* =========================
+       INITIAL STATE
+       ========================= */
+
+    updatePageIndicator();
+
+
   </script>
+
+
 </body>
 </html>
