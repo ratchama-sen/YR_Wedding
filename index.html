@@ -1,297 +1,632 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
+
   <meta charset="UTF-8" />
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
   />
-  <meta name="theme-color" content="#f3f1e9" />
-  <title>Yanika & Ratchama Wedding Invitation - You’re on our guest list!! </title>
+
+  <meta
+    name="theme-color"
+    content="#f3f1e9"
+  />
+
+  <title>Yanika & Ratchama Wedding Card</title>
+
 
   <style>
+
     :root {
+
       --bg1: #f6f3ec;
       --bg2: #e9efe3;
+
       --dot: rgba(95, 105, 64, 0.24);
       --dot-active: #6b7445;
+
       --safe-top: env(safe-area-inset-top, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
+
     }
 
+
+
     * {
+
       box-sizing: border-box;
+
       -webkit-tap-highlight-color: transparent;
+
     }
+
+
 
     html,
     body {
+
       margin: 0;
+
       width: 100%;
       height: 100%;
+
       overflow: hidden;
+
       background:
+
         radial-gradient(
           circle at top left,
           rgba(255,255,255,0.92),
           rgba(255,255,255,0) 28%
         ),
-        linear-gradient(145deg, var(--bg1), var(--bg2));
+
+        linear-gradient(
+          145deg,
+          var(--bg1),
+          var(--bg2)
+        );
+
     }
+
+
 
     body {
+
       display: flex;
+
       align-items: stretch;
       justify-content: center;
+
       overscroll-behavior: none;
+
     }
+
+
+
+    /* =====================================================
+       MAIN APP
+       ===================================================== */
+
 
     .app {
+
       position: relative;
+
       width: min(100vw, 720px);
+
       height: 100dvh;
+
       overflow: hidden;
-      padding-top: max(4px, var(--safe-top));
-      padding-bottom: max(6px, var(--safe-bottom));
+
+      padding-top:
+        max(4px, var(--safe-top));
+
+      padding-bottom:
+        max(6px, var(--safe-bottom));
+
     }
 
-    /* =========================
-       HORIZONTAL E-BOOK
-       ========================= */
+
+
+    /* =====================================================
+       HORIZONTAL SWIPE PAGES
+       ===================================================== */
+
 
     .slides {
+
       width: 100%;
       height: 100%;
+
       display: flex;
 
       overflow-x: auto;
       overflow-y: hidden;
 
       scroll-snap-type: x mandatory;
+
       scroll-behavior: smooth;
+
       overscroll-behavior-x: contain;
 
       scrollbar-width: none;
+
       -ms-overflow-style: none;
 
       touch-action: pan-x;
+
       -webkit-overflow-scrolling: touch;
+
     }
+
+
 
     .slides::-webkit-scrollbar {
+
       display: none;
+
     }
 
+
+
     .slide {
+
       flex: 0 0 100%;
+
       width: 100%;
       height: 100%;
 
       scroll-snap-align: start;
+
       scroll-snap-stop: always;
 
       display: flex;
-      align-items: center;
-      justify-content: center;
 
-      padding: 6px 6px 38px;
-    }
-
-    .card-frame {
-      width: 100%;
-      height: 100%;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      overflow: hidden;
-      border-radius: 18px;
-
-      background: rgba(255,255,255,0.22);
-
-      box-shadow:
-        0 18px 45px rgba(0,0,0,0.10);
-
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-    }
-
-    .card-frame img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: contain;
-      display: block;
-
-      user-select: none;
-      -webkit-user-select: none;
-      -webkit-user-drag: none;
-
-      pointer-events: none;
-    }
-
-    /* =========================
-       PAGE DOTS
-       ========================= */
-
-    .page-indicator {
-      position: absolute;
-      left: 50%;
-      bottom: max(10px, calc(var(--safe-bottom) + 4px));
-      transform: translateX(-50%);
-
-      display: flex;
-      gap: 7px;
-      align-items: center;
-
-      padding: 7px 11px;
-      border-radius: 999px;
-
-      background: rgba(255,255,255,0.52);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-
-      box-shadow: 0 7px 20px rgba(0,0,0,0.06);
-
-      z-index: 20;
-      pointer-events: none;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--dot);
-
-      transition:
-        transform 0.2s ease,
-        background 0.2s ease;
-    }
-
-    .dot.active {
-      background: var(--dot-active);
-      transform: scale(1.22);
-    }
-
-    /* =========================
-       FIRST TAP OVERLAY
-       This is intentional:
-       iPhone / Safari requires
-       a real user gesture before
-       audio with sound can play.
-       ========================= */
-
-    .start-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-
-      display: flex;
       align-items: center;
       justify-content: center;
 
       padding:
-        max(18px, var(--safe-top))
-        22px
-        max(18px, var(--safe-bottom));
+
+        6px
+        6px
+        38px;
+
+    }
+
+
+
+    /* =====================================================
+       CARD FRAME
+       ===================================================== */
+
+
+    .card-frame {
+
+      width: 100%;
+      height: 100%;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+
+      border-radius: 18px;
 
       background:
-        linear-gradient(
-          145deg,
-          rgba(246,243,236,0.94),
-          rgba(233,239,227,0.94)
+
+        rgba(
+          255,
+          255,
+          255,
+          0.22
         );
 
-      backdrop-filter: blur(9px);
-      -webkit-backdrop-filter: blur(9px);
+      box-shadow:
+
+        0 18px 45px
+        rgba(0,0,0,0.10);
+
+      backdrop-filter: blur(6px);
+
+      -webkit-backdrop-filter: blur(6px);
+
+    }
+
+
+
+    /* =====================================================
+       STATIC IMAGE PAGES
+       ===================================================== */
+
+
+    .card-frame img {
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+
+      display: block;
+
+      user-select: none;
+
+      -webkit-user-select: none;
+
+      -webkit-user-drag: none;
+
+      pointer-events: none;
+
+    }
+
+
+
+    /* =====================================================
+       VIDEO / ANIMATED PAGE
+       ===================================================== */
+
+
+    .card-frame video {
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+
+      display: block;
+
+      background: transparent;
+
+      user-select: none;
+
+      -webkit-user-select: none;
+
+      pointer-events: none;
+
+    }
+
+
+
+    /* =====================================================
+       PAGE DOTS
+       ===================================================== */
+
+
+    .page-indicator {
+
+      position: absolute;
+
+      left: 50%;
+
+      bottom:
+
+        max(
+          10px,
+          calc(
+            var(--safe-bottom) + 4px
+          )
+        );
+
+      transform: translateX(-50%);
+
+      display: flex;
+
+      gap: 7px;
+
+      align-items: center;
+
+      padding:
+
+        7px
+        11px;
+
+      border-radius: 999px;
+
+      background:
+
+        rgba(
+          255,
+          255,
+          255,
+          0.52
+        );
+
+      backdrop-filter: blur(10px);
+
+      -webkit-backdrop-filter: blur(10px);
+
+      box-shadow:
+
+        0 7px 20px
+        rgba(0,0,0,0.06);
+
+      z-index: 20;
+
+      pointer-events: none;
+
+    }
+
+
+
+    .dot {
+
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: var(--dot);
+
+      transition:
+
+        transform 0.2s ease,
+        background 0.2s ease;
+
+    }
+
+
+
+    .dot.active {
+
+      background:
+        var(--dot-active);
+
+      transform:
+        scale(1.22);
+
+    }
+
+
+
+    /* =====================================================
+       TAP TO OPEN SCREEN
+       Needed for music on iPhone / mobile browsers
+       ===================================================== */
+
+
+    .start-overlay {
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 9999;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding:
+
+        max(
+          18px,
+          var(--safe-top)
+        )
+
+        22px
+
+        max(
+          18px,
+          var(--safe-bottom)
+        );
+
+      background:
+
+        linear-gradient(
+
+          145deg,
+
+          rgba(
+            246,
+            243,
+            236,
+            0.94
+          ),
+
+          rgba(
+            233,
+            239,
+            227,
+            0.94
+          )
+
+        );
+
+      backdrop-filter:
+        blur(9px);
+
+      -webkit-backdrop-filter:
+        blur(9px);
 
       cursor: pointer;
 
       transition:
+
         opacity 0.35s ease,
         visibility 0.35s ease;
+
     }
+
+
 
     .start-overlay.hidden {
+
       opacity: 0;
+
       visibility: hidden;
+
       pointer-events: none;
+
     }
+
+
 
     .start-content {
+
       text-align: center;
+
       color: #687148;
+
       user-select: none;
+
       -webkit-user-select: none;
+
     }
+
+
 
     .start-title {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(1.15rem, 4.5vw, 1.5rem);
+
+      font-family:
+
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size:
+
+        clamp(
+          1.15rem,
+          4.5vw,
+          1.5rem
+        );
+
       letter-spacing: 0.03em;
+
       margin-bottom: 9px;
+
     }
+
+
 
     .start-subtitle {
-      font-family: Arial, Helvetica, sans-serif;
+
+      font-family:
+
+        Arial,
+        Helvetica,
+        sans-serif;
+
       font-size: 0.82rem;
+
       letter-spacing: 0.08em;
+
       text-transform: uppercase;
+
       opacity: 0.72;
+
     }
 
-    /* =========================
-       SOUND STATUS
-       No button / no control.
-       Only a tiny temporary toast.
-       ========================= */
+
+
+    /* =====================================================
+       TEMPORARY MUSIC STATUS
+       ===================================================== */
+
 
     .sound-status {
+
       position: fixed;
+
       left: 50%;
-      top: max(12px, calc(var(--safe-top) + 8px));
-      transform: translateX(-50%);
+
+      top:
+
+        max(
+          12px,
+          calc(
+            var(--safe-top) + 8px
+          )
+        );
+
+      transform:
+        translateX(-50%);
 
       z-index: 9998;
 
-      padding: 7px 11px;
+      padding:
+
+        7px
+        11px;
+
       border-radius: 999px;
 
-      font: 12px/1.2 Arial, Helvetica, sans-serif;
+      font:
+
+        12px / 1.2
+        Arial,
+        Helvetica,
+        sans-serif;
+
       color: #667044;
-      background: rgba(255,255,255,0.62);
 
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      background:
 
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+        rgba(
+          255,
+          255,
+          255,
+          0.62
+        );
+
+      box-shadow:
+
+        0 6px 18px
+        rgba(0,0,0,0.06);
+
+      backdrop-filter:
+        blur(8px);
+
+      -webkit-backdrop-filter:
+        blur(8px);
 
       opacity: 0;
+
       pointer-events: none;
 
-      transition: opacity 0.25s ease;
+      transition:
+        opacity 0.25s ease;
+
     }
+
+
 
     .sound-status.show {
+
       opacity: 1;
+
     }
+
+
+
+    /* =====================================================
+       TABLET / DESKTOP
+       ===================================================== */
+
 
     @media (min-width: 701px) {
+
       .slide {
-        padding: 16px 24px 52px;
+
+        padding:
+
+          16px
+          24px
+          52px;
+
       }
 
+
       .card-frame {
+
         border-radius: 24px;
+
       }
+
     }
+
+
   </style>
+
 </head>
+
+
 
 <body>
 
+
   <main class="app">
+
+
+    <!-- ===================================================
+         WEDDING CARD PAGES
+         =================================================== -->
+
 
     <section
       class="slides"
@@ -299,305 +634,826 @@
       aria-label="Wedding Invitation"
     >
 
-      <!-- PAGE 1 : FRONT -->
-      <article class="slide" aria-label="Wedding Card Front">
+
+
+      <!-- ===============================================
+           PAGE 1 : FRONT
+           =============================================== -->
+
+
+      <article
+        class="slide"
+        aria-label="Wedding Card Front"
+      >
+
         <div class="card-frame">
+
           <img
+
             src="./assets/front.png"
+
             alt="Yanika and Ratchama Wedding Invitation Front"
+
           />
+
         </div>
+
       </article>
 
-      <!-- PAGE 2 : BACK -->
-      <article class="slide" aria-label="Wedding Card Back">
+
+
+      <!-- ===============================================
+           PAGE 2 : BACK
+           =============================================== -->
+
+
+      <article
+        class="slide"
+        aria-label="Wedding Card Back"
+      >
+
         <div class="card-frame">
+
           <img
+
             src="./assets/back.png"
+
             alt="Yanika and Ratchama Wedding Invitation Back"
+
           />
+
         </div>
+
       </article>
 
-      <!-- PAGE 3 : BACK 2 -->
-<article class="slide" aria-label="Wedding Card Back 2">
-  <div class="card-frame">
-    <img
-      src="./assets/Back_2.png"
-      alt="Yanika and Ratchama Wedding Invitation Back 2"
-    />
-  </div>
-</article>
+
+
+      <!-- ===============================================
+           PAGE 3 : ANIMATED BACK 2
+           
+           Full-page animated video
+           
+           File:
+           assets/Back_2.mp4
+           =============================================== -->
+
+
+      <article
+        class="slide"
+        aria-label="Wedding Card Animated Page"
+      >
+
+        <div class="card-frame">
+
+
+          <video
+
+            id="animatedPage"
+
+            muted
+
+            loop
+
+            playsinline
+
+            preload="metadata"
+
+          >
+
+
+            <source
+
+              src="./assets/Back_2.mp4"
+
+              type="video/mp4"
+
+            />
+
+
+          </video>
+
+
+        </div>
+
+      </article>
+
+
 
     </section>
 
-    <div class="page-indicator" aria-hidden="true">
-      <span class="dot active" id="dot1"></span>
-      <span class="dot" id="dot2"></span>
-      <span class="dot" id="dot3"></span>
+
+
+    <!-- ===================================================
+         PAGE INDICATOR
+         =================================================== -->
+
+
+    <div
+      class="page-indicator"
+      aria-hidden="true"
+    >
+
+
+      <span
+        class="dot active"
+        id="dot1"
+      ></span>
+
+
+      <span
+        class="dot"
+        id="dot2"
+      ></span>
+
+
+      <span
+        class="dot"
+        id="dot3"
+      ></span>
+
+
     </div>
+
 
   </main>
 
-  <!--
-    IMPORTANT:
-    Put your audio file here:
 
-    assets/music.m4a
 
-    The browser will play it only after
-    the visitor taps the opening screen.
-  -->
+  <!-- =====================================================
+       BACKGROUND MUSIC
+       
+       File:
+       assets/music.m4a
+       ===================================================== -->
+
+
   <audio
+
     id="bgMusic"
+
     src="./assets/music.m4a"
+
     loop
+
     preload="auto"
+
     playsinline
+
   ></audio>
 
-  <!--
-    This opening overlay is the reliable
-    mobile solution for iPhone / Safari.
-    One tap = open the card + start music.
-  -->
+
+
+  <!-- =====================================================
+       TAP TO OPEN
+
+       Required so iPhone / Safari
+       can start background music
+       ===================================================== -->
+
+
   <div
+
     class="start-overlay"
+
     id="startOverlay"
+
     role="button"
+
     tabindex="0"
+
     aria-label="Open invitation"
+
   >
+
+
     <div class="start-content">
-      <div class="start-title">Tap to open</div>
-      <div class="start-subtitle">Yanika &amp; Ratchama said <br>"Are you ready for a big surprise!?"</div>
+
+
+      <div class="start-title">
+
+        Tap to open
+
+      </div>
+
+
+      <div class="start-subtitle">
+
+        Yanika &amp; Ratchama
+
+      </div>
+
+
     </div>
+
+
   </div>
 
-  <div class="sound-status" id="soundStatus">
+
+
+  <!-- MUSIC STATUS -->
+
+
+  <div
+
+    class="sound-status"
+
+    id="soundStatus"
+
+  >
+
     Music on
+
   </div>
+
+
 
   <script>
-    const slides = document.getElementById("slides");
 
-    const dot1 = document.getElementById("dot1");
-    const dot2 = document.getElementById("dot2");
-    const dot3 = document.getElementById("dot3");
 
-    const bgMusic = document.getElementById("bgMusic");
+    /* =====================================================
+       ELEMENTS
+       ===================================================== */
+
+
+    const slides =
+      document.getElementById("slides");
+
+
+    const dot1 =
+      document.getElementById("dot1");
+
+
+    const dot2 =
+      document.getElementById("dot2");
+
+
+    const dot3 =
+      document.getElementById("dot3");
+
+
+    const bgMusic =
+      document.getElementById("bgMusic");
+
+
+    const animatedPage =
+      document.getElementById("animatedPage");
+
 
     const startOverlay =
       document.getElementById("startOverlay");
+
 
     const soundStatus =
       document.getElementById("soundStatus");
 
 
-    /* =========================
-       MUSIC SETTINGS
-       ========================= */
 
-    // 0.00 = mute
-    // 0.30 = soft
-    // 0.55 = medium
-    // 1.00 = maximum
+    /* =====================================================
+       MUSIC SETTINGS
+       ===================================================== */
+
+
+    /*
+      Volume
+
+      0.00 = silent
+      0.30 = soft
+      0.55 = medium
+      1.00 = maximum
+    */
+
 
     bgMusic.volume = 0.55;
 
 
-    /* =========================
-       OPEN CARD + START MUSIC
-       ========================= */
+
+    /* =====================================================
+       OPEN INVITATION + START MUSIC
+       ===================================================== */
+
 
     let opened = false;
 
 
+
     function showSoundStatus(text) {
 
-      soundStatus.textContent = text;
 
-      soundStatus.classList.add("show");
+      soundStatus.textContent =
+        text;
 
-      setTimeout(() => {
-        soundStatus.classList.remove("show");
-      }, 1300);
+
+      soundStatus.classList.add(
+        "show"
+      );
+
+
+      setTimeout(
+
+        () => {
+
+          soundStatus.classList.remove(
+            "show"
+          );
+
+        },
+
+        1300
+
+      );
 
     }
+
 
 
     function openInvitation() {
 
+
       if (opened) {
+
         return;
+
       }
 
-      /*
-        IMPORTANT:
 
-        bgMusic.play() is called DIRECTLY
-        inside the user's click / touch gesture.
-
-        This is the most reliable approach
-        for iPhone Safari and Android Chrome.
-      */
-
-      const playPromise = bgMusic.play();
+      const playPromise =
+        bgMusic.play();
 
 
-      if (playPromise !== undefined) {
+
+      if (
+        playPromise !== undefined
+      ) {
+
 
         playPromise
+
           .then(() => {
 
+
             opened = true;
 
-            startOverlay.classList.add("hidden");
 
-            showSoundStatus("Music on");
-
-          })
-          .catch((error) => {
-
-            console.log(
-              "Audio could not start:",
-              error
+            startOverlay.classList.add(
+              "hidden"
             );
 
-            /*
-              Even if the browser cannot
-              decode the M4A file, still
-              allow the invitation to open.
-            */
+
+            showSoundStatus(
+              "Music on"
+            );
+
+
+          })
+
+
+          .catch((error) => {
+
+
+            console.log(
+
+              "Audio could not start:",
+
+              error
+
+            );
+
 
             opened = true;
 
-            startOverlay.classList.add("hidden");
 
-            showSoundStatus("Open");
+            startOverlay.classList.add(
+              "hidden"
+            );
+
 
           });
 
+
       }
+
 
       else {
 
+
         opened = true;
 
-        startOverlay.classList.add("hidden");
+
+        startOverlay.classList.add(
+          "hidden"
+        );
+
 
       }
+
 
     }
 
 
-    /*
-      Click is preferred because iOS
-      treats it as a clear user activation.
-    */
 
     startOverlay.addEventListener(
+
       "click",
+
       openInvitation
+
     );
 
 
-    /*
-      Keyboard fallback for desktop.
-    */
 
     startOverlay.addEventListener(
+
       "keydown",
+
       function(event) {
 
+
         if (
+
           event.key === "Enter" ||
+
           event.key === " "
+
         ) {
+
 
           event.preventDefault();
 
+
           openInvitation();
+
 
         }
 
+
       }
+
     );
 
 
-    /* =========================
-       PAGE INDICATOR
-       ========================= */
+
+    /* =====================================================
+       CURRENT PAGE
+       ===================================================== */
+
+
+    function getCurrentPage() {
+
+
+      const pageWidth =
+        slides.clientWidth;
+
+
+      return Math.round(
+
+        slides.scrollLeft /
+        pageWidth
+
+      );
+
+
+    }
+
+
+
+    /* =====================================================
+       PAGE DOT INDICATOR
+       ===================================================== */
+
 
     function updatePageIndicator() {
 
-  const pageWidth = slides.clientWidth;
 
-  const currentPage = Math.round(
-    slides.scrollLeft / pageWidth
-  );
+      const currentPage =
+        getCurrentPage();
 
 
-  dot1.classList.remove("active");
-  dot2.classList.remove("active");
-  dot3.classList.remove("active");
+
+      dot1.classList.remove(
+        "active"
+      );
 
 
-  if (currentPage === 0) {
+      dot2.classList.remove(
+        "active"
+      );
 
-    dot1.classList.add("active");
 
-  }
+      dot3.classList.remove(
+        "active"
+      );
 
-  else if (currentPage === 1) {
 
-    dot2.classList.add("active");
 
-  }
+      if (
+        currentPage === 0
+      ) {
 
-  else {
 
-    dot3.classList.add("active");
+        dot1.classList.add(
+          "active"
+        );
 
-  }
 
-}
+      }
+
+
+      else if (
+        currentPage === 1
+      ) {
+
+
+        dot2.classList.add(
+          "active"
+        );
+
+
+      }
+
+
+      else {
+
+
+        dot3.classList.add(
+          "active"
+        );
+
+
+      }
+
+
+    }
+
+
+
+    /* =====================================================
+       VIDEO PAGE CONTROL
+
+       Page 3 video:
+
+       - starts when user swipes to page 3
+       - loops automatically
+       - pauses when user leaves page 3
+       - starts from beginning when returning
+       ===================================================== */
+
+
+    let lastPage =
+      0;
+
+
+
+    function updateAnimatedPage() {
+
+
+      const currentPage =
+        getCurrentPage();
+
+
+
+      /*
+        PAGE INDEX:
+
+        0 = Front
+        1 = Back
+        2 = Back_2 Video
+      */
+
+
+      if (
+        currentPage === 2
+      ) {
+
+
+        if (
+          lastPage !== 2
+        ) {
+
+
+          try {
+
+
+            animatedPage.currentTime =
+              0;
+
+
+          }
+
+          catch (error) {
+
+
+            console.log(
+              "Video reset error",
+              error
+            );
+
+
+          }
+
+
+        }
+
+
+
+        const videoPlay =
+          animatedPage.play();
+
+
+
+        if (
+          videoPlay !== undefined
+        ) {
+
+
+          videoPlay.catch(
+
+            error => {
+
+              console.log(
+
+                "Video autoplay retry:",
+
+                error
+
+              );
+
+            }
+
+          );
+
+
+        }
+
+
+      }
+
+
+      else {
+
+
+        animatedPage.pause();
+
+
+      }
+
+
+
+      lastPage =
+        currentPage;
+
+
+    }
+
+
+
+    /* =====================================================
+       UPDATE EVERYTHING ON SWIPE
+       ===================================================== */
+
+
+    function updateInterface() {
+
+
+      updatePageIndicator();
+
+
+      updateAnimatedPage();
+
+
+    }
+
 
 
     slides.addEventListener(
+
       "scroll",
-      updatePageIndicator,
+
+      updateInterface,
+
       {
         passive: true
       }
+
     );
+
+
+
+    /*
+      scrollend is supported
+      by newer browsers.
+
+      It makes video start more
+      reliably after swipe finishes.
+    */
+
+
+    slides.addEventListener(
+
+      "scrollend",
+
+      updateInterface
+
+    );
+
 
 
     window.addEventListener(
+
       "resize",
-      updatePageIndicator
+
+      updateInterface
+
     );
 
 
-    updatePageIndicator();
+
+    /* =====================================================
+       VIDEO SAFETY SETTINGS
+       ===================================================== */
 
 
-    /* =========================
-       AUDIO DEBUG
-       ========================= */
+    animatedPage.muted =
+      true;
+
+
+    animatedPage.loop =
+      true;
+
+
+    /*
+      Important for iPhone
+    */
+
+
+    animatedPage.setAttribute(
+      "playsinline",
+      ""
+    );
+
+
+    animatedPage.setAttribute(
+      "webkit-playsinline",
+      ""
+    );
+
+
+
+    /* =====================================================
+       FILE ERROR DEBUG
+       ===================================================== */
+
 
     bgMusic.addEventListener(
+
       "error",
+
       function() {
 
+
         console.log(
-          "Audio file error. Check that ./assets/music.m4a exists and uses a browser-compatible codec."
+
+          "Music error. Check ./assets/music.m4a"
+
         );
 
+
       }
+
     );
+
+
+
+    animatedPage.addEventListener(
+
+      "error",
+
+      function() {
+
+
+        console.log(
+
+          "Video error. Check ./assets/Back_2.mp4 and make sure it is H.264 MP4."
+
+        );
+
+
+      }
+
+    );
+
+
+
+    /* =====================================================
+       INITIAL STATE
+       ===================================================== */
+
+
+    updateInterface();
+
 
   </script>
 
+
 </body>
+
 </html>
