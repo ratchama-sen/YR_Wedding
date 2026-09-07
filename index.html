@@ -319,11 +319,22 @@
         </div>
       </article>
 
+      <!-- PAGE 3 : BACK 2 -->
+<article class="slide" aria-label="Wedding Card Back 2">
+  <div class="card-frame">
+    <img
+      src="./assets/Back_2.png"
+      alt="Yanika and Ratchama Wedding Invitation Back 2"
+    />
+  </div>
+</article>
+
     </section>
 
     <div class="page-indicator" aria-hidden="true">
       <span class="dot active" id="dot1"></span>
       <span class="dot" id="dot2"></span>
+      <span class="dot" id="dot3"></span>
     </div>
 
   </main>
@@ -372,6 +383,7 @@
 
     const dot1 = document.getElementById("dot1");
     const dot2 = document.getElementById("dot2");
+    const dot3 = document.getElementById("dot3");
 
     const bgMusic = document.getElementById("bgMusic");
 
@@ -519,31 +531,37 @@
 
     function updatePageIndicator() {
 
-      const pageWidth =
-        slides.clientWidth;
+  const pageWidth = slides.clientWidth;
 
-      const currentPage =
-        Math.round(
-          slides.scrollLeft /
-          pageWidth
-        );
+  const currentPage = Math.round(
+    slides.scrollLeft / pageWidth
+  );
 
 
-      if (currentPage === 0) {
+  dot1.classList.remove("active");
+  dot2.classList.remove("active");
+  dot3.classList.remove("active");
 
-        dot1.classList.add("active");
-        dot2.classList.remove("active");
 
-      }
+  if (currentPage === 0) {
 
-      else {
+    dot1.classList.add("active");
 
-        dot1.classList.remove("active");
-        dot2.classList.add("active");
+  }
 
-      }
+  else if (currentPage === 1) {
 
-    }
+    dot2.classList.add("active");
+
+  }
+
+  else {
+
+    dot3.classList.add("active");
+
+  }
+
+}
 
 
     slides.addEventListener(
